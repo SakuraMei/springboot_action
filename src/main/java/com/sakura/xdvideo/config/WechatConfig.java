@@ -10,7 +10,10 @@ import org.springframework.context.annotation.PropertySource;
  * @author sakura
  */
 @Configuration
-@PropertySource(value = "classpath:application.properties")//注解指定配置文件位置；(属性名称规范: 大模块.子模块.属性名)
+/**
+ * 注解指定配置文件位置；(属性名称规范: 大模块.子模块.属性名)
+ */
+@PropertySource(value = "classpath:application.properties")
 public class WechatConfig {
 
     /**
@@ -57,6 +60,29 @@ public class WechatConfig {
      * 获取用户信息地址
      */
     private final static String OPEN_USER_INFO_URL = "https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh-CN";
+
+    /**
+     * 商户号id
+     */
+    @Value("${wxpay.mer_id}")
+    private String mchId;
+
+    /**
+     * 支付key
+     */
+    @Value("${wxpay.key}")
+    private String key;
+
+    /**
+     * 微信支付回调url
+     */
+    @Value("${wxpay.callback}")
+    private String payCallbackUrl;
+
+    /**
+     * 统一下单url
+     */
+    private static final String UNIFIED_ORDER_URL = "https://api.mch.weixin.qq.com/pay/unifiedorder";
 
     public String getAppId() {
         return appId;
@@ -108,5 +134,33 @@ public class WechatConfig {
 
     public static String getOpenUserInfoUrl() {
         return OPEN_USER_INFO_URL;
+    }
+
+    public String getMchId() {
+        return mchId;
+    }
+
+    public void setMchId(String mchId) {
+        this.mchId = mchId;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getPayCallbackUrl() {
+        return payCallbackUrl;
+    }
+
+    public void setPayCallbackUrl(String payCallbackUrl) {
+        this.payCallbackUrl = payCallbackUrl;
+    }
+
+    public static String getUnifiedOrderUrl() {
+        return UNIFIED_ORDER_URL;
     }
 }

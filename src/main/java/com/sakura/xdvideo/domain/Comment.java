@@ -2,6 +2,7 @@ package com.sakura.xdvideo.domain;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 评论实体类
@@ -18,7 +19,7 @@ public class Comment implements Serializable {
     private String name;
     private double point;
     private Integer up;
-    private java.sql.Timestamp createTime;
+    private Date createTime;
     private Integer orderId;
     private Integer videoId;
 
@@ -86,14 +87,13 @@ public class Comment implements Serializable {
     }
 
 
-    public java.sql.Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(java.sql.Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
 
     public Integer getOrderId() {
         return orderId;

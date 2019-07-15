@@ -2,6 +2,7 @@ package com.sakura.xdvideo.domain;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 用户实体类
@@ -19,7 +20,7 @@ public class User implements Serializable {
     private String sign;
     private Integer sex;
     private String city;
-    private java.sql.Timestamp createTime;
+    private Date createTime;
 
 
     public Integer getId() {
@@ -94,12 +95,11 @@ public class User implements Serializable {
     }
 
 
-    public java.sql.Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(java.sql.Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
 }

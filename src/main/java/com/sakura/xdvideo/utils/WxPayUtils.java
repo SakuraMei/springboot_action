@@ -104,7 +104,7 @@ public class WxPayUtils {
      * @param key
      * @return
      */
-    private static String createSign(SortedMap<String, String> params, String key) {
+    public static String createSign(SortedMap<String, String> params, String key) {
         StringBuilder sb = new StringBuilder();
 
         Set<Map.Entry<String, String>> es = params.entrySet();
@@ -139,5 +139,27 @@ public class WxPayUtils {
         String sign = createSign(params, key);
         String wxPaySign = params.get("sign").toUpperCase();
         return wxPaySign.equals(sign);
+    }
+
+    /**
+     * 获取sortedmap
+     *
+     * @param map
+     * @return
+     */
+    public static SortedMap<String, String> getSortedMap(Map<String, String> map) {
+
+        SortedMap<String, String> sortedMap = new TreeMap<>();
+        Iterator<String> it = map.keySet().iterator();
+        while (it.hasNext()) {
+            String key = it.next();
+            String value = map.get(key);
+            String temp = "";
+            if (value != null) {
+                temp = value.trim();
+            }
+            sortedMap.put(key, temp);
+        }
+        return sortedMap;
     }
 }

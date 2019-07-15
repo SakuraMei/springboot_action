@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Map;
 
@@ -84,7 +83,7 @@ public class UserServiceImpl implements UserService {
         user.setCity(finalAddress);
         user.setOpenid(openId);
         user.setSex(sex);
-        user.setCreateTime((Timestamp) new Date());
+        user.setCreateTime(new Date());
 
         /**
          * 用户不存在，则添加用户

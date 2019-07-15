@@ -2,6 +2,7 @@ package com.sakura.xdvideo.domain;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 集实体类
@@ -18,7 +19,7 @@ public class Episode implements Serializable {
     private String coverImg;
     private Integer videoId;
     private String summary;
-    private java.sql.Timestamp createTime;
+    private Date createTime;
     private Integer chapterId;
 
 
@@ -85,14 +86,13 @@ public class Episode implements Serializable {
     }
 
 
-    public java.sql.Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(java.sql.Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
 
     public Integer getChapterId() {
         return chapterId;
