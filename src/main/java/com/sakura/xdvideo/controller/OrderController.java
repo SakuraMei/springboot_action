@@ -8,7 +8,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.sakura.xdvideo.dto.VideoOrderDto;
 import com.sakura.xdvideo.service.VideoOrderService;
-import lombok.extern.slf4j.Slf4j;
+import com.sakura.xdvideo.utils.IpUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +28,7 @@ import java.util.HashMap;
  * @author sakura
  */
 @RestController
-//@RequestMapping("/user/api/v1/order")
-@RequestMapping("/api/v1/order")
+@RequestMapping("/user/api/v1/order")
 public class OrderController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -51,10 +50,8 @@ public class OrderController {
     @GetMapping("add")
     public void saveOrder(@RequestParam(value = "video_id", required = true) int videoId,
                           HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        String ip = IpUtils.getIpAddr(request);
-//        Integer userId = (Integer) request.getAttribute("user_id");
-        String ip = "120.1.25.43";
-        int userId = 1;
+        String ip = IpUtils.getIpAddr(request);
+        Integer userId = (Integer) request.getAttribute("user_id");
 
         VideoOrderDto videoOrderDto = new VideoOrderDto();
         videoOrderDto.setVideoId(videoId);
